@@ -129,6 +129,10 @@ export default function ChatPage() {
           typing={typingFrom.has(selected._id)}
           messages={messages}
           onSend={sendMessage}
+          onBack={() => {
+            setSelected(null);
+            setMessages([]);
+          }}
         />
       ) : (
         <main className="chat-empty">

@@ -11,7 +11,7 @@ const formatLastSeen = (d) => {
   return `last seen ${sameDay ? 'today' : date.toLocaleDateString()} at ${formatTime(date)}`;
 };
 
-export default function ChatWindow({ partner, online, typing, messages, onSend }) {
+export default function ChatWindow({ partner, online, typing, messages, onSend, onBack }) {
   const { user, socket } = useAuth();
   const [text, setText] = useState('');
   const [error, setError] = useState('');
@@ -62,6 +62,9 @@ export default function ChatWindow({ partner, online, typing, messages, onSend }
   return (
     <main className="chat-window">
       <header className="chat-header">
+        <button className="link back" onClick={onBack} aria-label="Back to conversations">
+          ←
+        </button>
         <Avatar name={partner.username} online={online} />
         <div>
           <strong>{partner.username}</strong>
